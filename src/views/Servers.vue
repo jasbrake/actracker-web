@@ -12,7 +12,7 @@
                   <th><b-tooltip label="Description" type="is-dark"><b-icon icon="align-justify"></b-icon></b-tooltip></th>
                   <th class="has-text-centered"><b-tooltip label="Players" type="is-dark"><b-icon icon="users"></b-icon></b-tooltip></th>
                   <th class="is-hidden-mobile has-text-centered"><b-tooltip label="Mode" type="is-dark"><b-icon icon="gamepad"></b-icon></b-tooltip></th>
-                  <th class="is-hidden-mobile has-text-centered"><b-tooltip label="Map" type="is-dark"><b-icon icon="map-marked-alt"></b-icon></b-tooltip></th>
+                  <th class="is-hidden-mobile"><b-tooltip label="Map" type="is-dark"><b-icon icon="map-marked-alt"></b-icon></b-tooltip></th>
                   <th class="is-hidden-mobile has-text-centered"><b-tooltip label="Time Remaining" type="is-dark"><b-icon icon="hourglass"></b-icon></b-tooltip></th>
                   <th class="is-hidden-mobile"><b-tooltip label="Address" type="is-dark"><b-icon icon="at"></b-icon></b-tooltip></th>
                 </tr>
@@ -22,8 +22,8 @@
                   <td class="has-text-centered"><b-tooltip :label="server.country" type="is-dark"><span :class="['flag-icon', 'flag-icon-' + server.country_iso.toLowerCase()]"></span></b-tooltip></td>
                   <td><b>{{ server.description }}</b></td>
                   <td class="has-text-centered"><span class="tag is-medium is-info">{{ server.game.player_count }}/{{ server.max_clients }}</span></td>
-                  <td class="is-hidden-mobile has-text-centered">{{ server.mode }}</td>
-                  <td class="is-hidden-mobile has-text-centered">{{ server.game.current_map }}</td>
+                  <td class="is-hidden-mobile has-text-centered">{{ server.game.mode }}</td>
+                  <td class="is-hidden-mobile">{{ server.game.map }}</td>
                   <td class="is-hidden-mobile has-text-centered"><span class="tag is-medium">{{ server.game.minutes_remaining }}</span></td>
                   <td class="is-hidden-mobile">
                     <span class="tags has-addons">
