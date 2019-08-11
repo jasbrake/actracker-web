@@ -22,7 +22,7 @@
                   <td class="has-text-centered"><b-tooltip :label="server.country" type="is-dark"><span :class="['flag-icon', 'flag-icon-' + server.country_iso.toLowerCase()]"></span></b-tooltip></td>
                   <td><b>{{ server.description }}</b></td>
                   <td class="has-text-centered"><span class="tag is-medium is-info">{{ server.game.player_count }}/{{ server.max_clients }}</span></td>
-                  <td class="is-hidden-mobile has-text-centered">{{ server.game.mode }}</td>
+                  <td class="is-hidden-mobile has-text-centered">{{ mode(server.game.mode) }}</td>
                   <td class="is-hidden-mobile">{{ server.game.map }}</td>
                   <td class="is-hidden-mobile has-text-centered"><span class="tag is-medium">{{ server.game.minutes_remaining }}</span></td>
                   <td class="is-hidden-mobile">
@@ -45,6 +45,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { getMode } from '@/utils/modes'
 
 export default {
   name: 'servers',
@@ -71,6 +72,9 @@ export default {
     },
     stopFetchingServers: function () {
       clearInterval(this.fetchTimer)
+    },
+    mode: function (n) {
+      return getMode(n)
     }
   },
   created () {
