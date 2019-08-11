@@ -1,9 +1,7 @@
 <template>
 <nav class="navbar is-black" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-        <span>AC Tracker</span>
-    </a>
+    <router-link class="navbar-item" to="/">AC Tracker</router-link>
 
     <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>

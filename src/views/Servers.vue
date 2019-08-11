@@ -33,36 +33,19 @@
                 </tr>
               </tbody>
             </table>
+            <b-message type="is-danger" :active="!couldFetchServers" size="is-medium" icon-size="is-medium" has-icon>
+              Could not load servers
+            </b-message>
           </div>
         </div>
-        <!-- <:data="servers" striped hoverable>
-          <template slot-scope="props" slot="header">
-            {{ props.column.label }}
-          </template>
-          <template slot-scope="props">
-            <b-table-column field="description" label="Description">
-              {{ props.row.description }}
-            </b-table-column>
-            <b-table-column field="players" label="Players" width="1" centered>
-              <span class="tag is-info is-medium">{{ props.row.player_count }}/{{ props.row.max_clients }}</span>
-            </b-table-column>
-            <b-table-column field="mode" label="Mode" width="1" centered>
-              {{ /*props.row.mode*/"CTF" }}
-            </b-table-column>
-            <b-table-column field="map" label="Map" width="1" centered>
-              {{ props.row.current_map }}
-            </b-table-column>
-            <b-table-column field="time_left" label="Remaining" width="1" centered>
-              {{ props.row.minutes_remaining }} minutes
-            </b-table-column>
-          </template>
-        </b-table> -->
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'servers',
   data: function () {
@@ -72,35 +55,25 @@ export default {
     }
   },
   computed: {
-    serverCount: function () {
-      return this.servers.length
-    },
-    sortedServers: function () {
-      return [...this.servers].sort((a, b) => b.game.player_count - a.game.player_count)
-    }
+    ...mapGetters([
+      'sortedServers',
+      'serverCount',
+      'couldFetchServers'
+    ])
   },
   methods: {
     serverClicked: function (key) {
-      console.log(key)
-    },
-    fetchServers: function () {
-      fetch('http://localhost:3000/servers')
-        .then(res => {
-          if (res.ok) { return res.json() } else { return Promise.reject(new Error(`${res.status}: ${res.statusText}`)) }
-        }).then(res => {
-          this.servers = res
-        })
-        .catch(err => console.error(err))
+      this.$router.push(`server/${key}`)
     },
     startFetchingServers: function () {
-      this.fetchTimer = setInterval(() => this.fetchServers(), 5000)
+      this.$store.dispatch('updateServers')
+      this.fetchTimer = setInterval(() => this.$store.dispatch('updateServers'), 5000)
     },
     stopFetchingServers: function () {
       clearInterval(this.fetchTimer)
     }
   },
   created () {
-    this.fetchServers()
     this.startFetchingServers()
   },
   beforeDestroy () {
