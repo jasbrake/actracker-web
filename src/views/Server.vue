@@ -6,29 +6,32 @@
           <b-button icon-left="arrow-left" @click="$router.go(-1)">
             Back
           </b-button>
-          <h1 class="title title-text is-inline">{{ server.description }}</h1>
+          <h1 v-if="server" class="title title-text is-inline">{{ server.description }}</h1>
           <hr>
-          <h2 class="has-text-centered is-size-5">{{ mode }} <b>|</b> {{ server.game.map }} <b>|</b> {{ server.game.minutes_remaining }} minutes remaining <b>|</b> {{ server.key }}</h2>
+          <h2 v-if="server" class="has-text-centered is-size-5">{{ mode }} <b>|</b> {{ server.game.map }} <b>|</b> {{ server.game.minutes_remaining }} minutes remaining <b>|</b> {{ server.key }}</h2>
         </span>
         <br>
-        <div v-if="teamMode" class="columns is-desktop is-half-desktop is-centered">
-          <div class="column">
-            <ServerPlayerTable :players="rvsfPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+        <div v-if="server">
+          <div v-if="teamMode" class="columns is-desktop is-half-desktop is-centered">
+            <div class="column">
+              <ServerPlayerTable :players="rvsfPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+            </div>
+            <div class="column">
+              <ServerPlayerTable :players="claPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+            </div>
           </div>
-          <div class="column">
-            <ServerPlayerTable :players="claPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+          <div v-else class="columns is-half-desktop is-centered">
+            <div class="column is-three-fifths">
+              <ServerPlayerTable :players="activePlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+            </div>
+          </div>
+          <div v-if="specPlayers.length > 0" class="columns is-half-desktop is-centered">
+            <div class="column is-three-fifths">
+              <ServerPlayerTable :players="specPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+            </div>
           </div>
         </div>
-        <div v-else class="columns is-half-desktop is-centered">
-          <div class="column is-three-fifths">
-            <ServerPlayerTable :players="activePlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
-          </div>
-        </div>
-        <div v-if="specPlayers.length > 0" class="columns is-half-desktop is-centered">
-          <div class="column is-three-fifths">
-            <ServerPlayerTable :players="specPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
-          </div>
-        </div>
+        <div v-else class="has-text-centered">Server has no current game!</div>
       </div>
     </section>
   </div>
@@ -39,13 +42,13 @@ import { getMode, teamMode, flagMode } from '@/utils/modes'
 import ServerPlayerTable from '@/components/ServerPlayerTable'
 
 export default {
-  name: 'serverDetail',
+  name: 'Server',
   components: {
     ServerPlayerTable
   },
   computed: {
     server () {
-      return this.$store.getters.serverByKey(this.$route.params.id) || {}
+      return this.$store.getters.serverByKey(this.$route.params.id)
     },
     mode () {
       return getMode(this.server.game.mode)
