@@ -13,20 +13,20 @@
         <br>
         <div v-if="teamMode" class="columns is-desktop is-half-desktop is-centered">
           <div class="column">
-            <GameStats :players="rvsfPlayers" :flagMode="flagMode" :teamMode="teamMode"></GameStats>
+            <ServerPlayerTable :players="rvsfPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
           </div>
           <div class="column">
-            <GameStats :players="claPlayers" :flagMode="flagMode" :teamMode="teamMode"></GameStats>
+            <ServerPlayerTable :players="claPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
           </div>
         </div>
         <div v-else class="columns is-half-desktop is-centered">
           <div class="column is-three-fifths">
-            <GameStats :players="activePlayers" :flagMode="flagMode" :teamMode="teamMode"></GameStats>
+            <ServerPlayerTable :players="activePlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
           </div>
         </div>
         <div v-if="specPlayers.length > 0" class="columns is-half-desktop is-centered">
           <div class="column is-three-fifths">
-            <GameStats :players="specPlayers" :flagMode="flagMode" :teamMode="teamMode"></GameStats>
+            <ServerPlayerTable :players="specPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
           </div>
         </div>
       </div>
@@ -36,12 +36,12 @@
 
 <script>
 import { getMode, teamMode, flagMode } from '@/utils/modes'
-import GameStats from '@/components/GameStats'
+import ServerPlayerTable from '@/components/ServerPlayerTable'
 
 export default {
   name: 'serverDetail',
   components: {
-    GameStats
+    ServerPlayerTable
   },
   computed: {
     server () {
