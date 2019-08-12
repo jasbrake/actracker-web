@@ -76,12 +76,6 @@ export default {
     mode: function (n) {
       return getMode(n)
     }
-  },
-  created () {
-    this.startFetchingServers()
-  },
-  beforeDestroy () {
-    clearInterval(this.fetchTimer)
   }
 }
 </script>

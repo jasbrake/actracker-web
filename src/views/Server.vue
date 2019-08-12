@@ -13,20 +13,20 @@
         <br>
         <div v-if="teamMode" class="columns is-desktop is-half-desktop is-centered">
           <div class="column">
-            <GameStats :players="rvsfPlayers" :flagMode="flagMode"></GameStats>
+            <GameStats :players="rvsfPlayers" :flagMode="flagMode" :teamMode="teamMode"></GameStats>
           </div>
           <div class="column">
-            <GameStats :players="claPlayers" :flagMode="flagMode"></GameStats>
+            <GameStats :players="claPlayers" :flagMode="flagMode" :teamMode="teamMode"></GameStats>
           </div>
         </div>
         <div v-else class="columns is-half-desktop is-centered">
           <div class="column is-three-fifths">
-            <GameStats :players="activePlayers" :flagMode="flagMode"></GameStats>
+            <GameStats :players="activePlayers" :flagMode="flagMode" :teamMode="teamMode"></GameStats>
           </div>
         </div>
         <div v-if="specPlayers.length > 0" class="columns is-half-desktop is-centered">
           <div class="column is-three-fifths">
-            <GameStats :players="specPlayers" :flagMode="flagMode"></GameStats>
+            <GameStats :players="specPlayers" :flagMode="flagMode" :teamMode="teamMode"></GameStats>
           </div>
         </div>
       </div>
