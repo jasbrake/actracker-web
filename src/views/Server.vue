@@ -14,20 +14,20 @@
         <div v-if="server">
           <div v-if="teamMode" class="columns is-desktop is-half-desktop is-centered">
             <div class="column">
-              <ServerPlayerTable :players="rvsfPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+              <ServerPlayerTable :players="rvsfPlayers" :flagMode="flagMode" :teamMode="teamMode" teamName="RVSF" class="rvsf"></ServerPlayerTable>
             </div>
             <div class="column">
-              <ServerPlayerTable :players="claPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+              <ServerPlayerTable :players="claPlayers" :flagMode="flagMode" :teamMode="teamMode" teamName="CLA" class="cla"></ServerPlayerTable>
             </div>
           </div>
           <div v-else class="columns is-half-desktop is-centered">
             <div class="column is-three-fifths">
-              <ServerPlayerTable :players="activePlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+              <ServerPlayerTable :players="activePlayers" :flagMode="flagMode" :teamMode="teamMode" teamName="All Players" class="normal"></ServerPlayerTable>
             </div>
           </div>
           <div v-if="specPlayers.length > 0" class="columns is-half-desktop is-centered">
             <div class="column is-three-fifths">
-              <ServerPlayerTable :players="specPlayers" :flagMode="flagMode" :teamMode="teamMode"></ServerPlayerTable>
+              <ServerPlayerTable :players="specPlayers" :flagMode="flagMode" :teamMode="teamMode" teamName="Spectators" class="normal"></ServerPlayerTable>
             </div>
           </div>
         </div>
