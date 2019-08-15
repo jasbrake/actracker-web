@@ -5,7 +5,7 @@
         <h1 class="title">Servers</h1>
         <div class="columns is-full is-centered">
           <div class="column">
-            <table class="table is-hoverable is-fullwidth">
+            <table class="table is-striped is-hoverable is-fullwidth">
               <thead>
                 <tr>
                   <th class="has-text-centered"><b-tooltip label="Location" type="is-dark"><b-icon icon="globe-americas"></b-icon></b-tooltip></th>
