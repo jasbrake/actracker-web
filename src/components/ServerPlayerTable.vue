@@ -9,7 +9,7 @@
           <th v-if="flagMode" class="has-text-centered"><b-tooltip label="Flags" type="is-dark"><b-icon icon="flag"></b-icon></b-tooltip></th>
           <th class="has-text-centered"><b-tooltip label="Kills" type="is-dark"><b-icon icon="crosshairs"></b-icon></b-tooltip></th>
           <th class="has-text-centered"><b-tooltip label="Deaths" type="is-dark"><b-icon icon="skull"></b-icon></b-tooltip></th>
-          <th class="has-text-centered"><b-tooltip label="K/D" type="is-dark"><b-icon icon="percentage"></b-icon></b-tooltip></th>
+          <th class="is-hidden-mobile has-text-centered"><b-tooltip label="K/D" type="is-dark"><b-icon icon="percentage"></b-icon></b-tooltip></th>
           <th v-if="teamMode" class="is-hidden-mobile has-text-centered"><b-tooltip label="Teamkills" type="is-dark"><b-icon icon="angry"></b-icon></b-tooltip></th>
           <th class="is-hidden-mobile"><b-tooltip label="Address" type="is-dark"><b-icon icon="at"></b-icon></b-tooltip></th>
         </tr>
@@ -21,7 +21,7 @@
           <td v-if="flagMode" class="has-text-centered">{{ p.flags }}</td>
           <td class="has-text-centered">{{ p.kills }}</td>
           <td class="has-text-centered">{{ p.deaths }}</td>
-          <td class="has-text-centered">{{ kdr(p.kills, p.deaths).toFixed(2) }}</td>
+          <td class="is-hidden-mobile has-text-centered">{{ kdr(p.kills, p.deaths).toFixed(2) }}</td>
           <td v-if="teamMode" class="is-hidden-mobile has-text-centered"><span v-if="p.teamkills > 2" class="teamkiller-red">{{ p.teamkills }}</span><span v-else>{{ p.teamkills }}</span></td>
           <td class="is-hidden-mobile">{{ p.ip }}</td>
         </tr>
