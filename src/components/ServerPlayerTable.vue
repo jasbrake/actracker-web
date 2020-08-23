@@ -34,10 +34,10 @@
 export default {
   name: 'ServerPlayerTable',
   props: {
-    'players': Array,
-    'flagMode': Boolean,
-    'teamMode': Boolean,
-    'teamName': String
+    players: Array,
+    flagMode: Boolean,
+    teamMode: Boolean,
+    teamName: String
   },
   methods: {
     kdr (kills, deaths) {

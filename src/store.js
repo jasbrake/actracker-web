@@ -35,7 +35,7 @@ export default new Vuex.Store({
   actions: {
     async updateServers ({ commit, state }) {
       if (state.update) {
-        let servers = await api.fetchServers()
+        const servers = await api.fetchServers()
         if (servers == null) {
           commit('updateServers', [])
           commit('updateCouldFetchServers', false)

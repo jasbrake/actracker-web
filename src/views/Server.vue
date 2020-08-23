@@ -61,18 +61,10 @@ export default {
         return b.kills - a.kills
       })
     },
-    activePlayers () {
-      return this.sortedPlayers.filter(p => p.team !== 'SPECTATOR')
-    },
-    specPlayers () {
-      return this.sortedPlayers.filter(p => p.team === 'SPECTATOR')
-    },
-    claPlayers () {
-      return this.sortedPlayers.filter(p => p.team === 'CLA')
-    },
-    rvsfPlayers () {
-      return this.sortedPlayers.filter(p => p.team === 'RVSF')
-    },
+    activePlayers: ({ sortedPlayers }) => sortedPlayers.filter(p => p.team !== 'SPECTATOR'),
+    specPlayers: ({ sortedPlayers }) => sortedPlayers.filter(p => p.team === 'SPECTATOR'),
+    claPlayers: ({ sortedPlayers }) => sortedPlayers.filter(p => p.team === 'CLA'),
+    rvsfPlayers: ({ sortedPlayers }) => sortedPlayers.filter(p => p.team === 'RVSF'),
     teamMode () {
       return teamMode(this.server.game.mode) || false
     },
