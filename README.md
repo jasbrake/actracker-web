@@ -1,5 +1,7 @@
 # AC Tracker Web
 
+The backend is in a separate repository [here](https://github.com/jasbrake/actracker).
+
 ## Project setup
 ```
 npm install
