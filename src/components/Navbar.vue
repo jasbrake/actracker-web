@@ -1,15 +1,21 @@
 <template>
-<nav class="navbar is-black" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <router-link class="navbar-item" to="/">AC Tracker</router-link>
+  <b-navbar class="is-black">
+    <template #brand>
+      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+        AC Tracker
+      </b-navbar-item>
+    </template>
 
-    <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a> -->
-  </div>
-</nav>
+    <template #start>
+    </template>
+
+    <template #end>
+      <b-navbar-item tag="a" href="https://github.com/jasbrake/actracker-web">
+        <b-icon pack="fab" icon="github" size="is-large" />
+      </b-navbar-item>
+    </template>
+
+  </b-navbar>
 </template>
 
 <script>
