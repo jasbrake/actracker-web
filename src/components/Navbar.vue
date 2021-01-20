@@ -10,7 +10,7 @@
     </template>
 
     <template #end>
-      <b-navbar-item tag="a" href="https://github.com/jasbrake/actracker-web">
+      <b-navbar-item tag="a" href="https://github.com/jasbrake/actracker">
         <b-icon pack="fab" icon="github" size="is-large" />
       </b-navbar-item>
     </template>
