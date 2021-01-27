@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Servers from './views/Servers.vue'
 import Server from './views/Server.vue'
 import Search from './views/Search.vue'
+import Player from '@/views/Player'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/server/:id',
       name: 'server',
       component: Server
+    },
+    {
+      path: '/player/:name',
+      name: 'player',
+      component: Player
     },
     {
       path: '/search',

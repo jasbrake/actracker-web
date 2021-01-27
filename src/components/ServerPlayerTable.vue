@@ -1,7 +1,7 @@
 <template>
   <div class="header has-text-centered">
     <p class="is-size-5">{{ teamName }}</p>
-    <table class="table is-fullwidth is-striped">
+    <table class="table table-box is-fullwidth">
       <thead>
         <tr>
           <th class="has-text-centered"><b-tooltip label="Location" type="is-dark"><b-icon icon="globe-americas"></b-icon></b-tooltip></th>
@@ -17,13 +17,13 @@
       <tbody>
         <tr v-for="p in players" :key="p.client_number">
           <td class="has-text-centered"><b-tooltip :label="p.country" type="is-dark"><span :class="['flag-icon', 'flag-icon-' + p.country_iso.toLowerCase()]"></span></b-tooltip></td>
-          <td>{{ p.name }}</td>
+          <td><router-link :to="`/player/${p.name}`">{{ p.name }}</router-link></td>
           <td v-if="flagMode" class="has-text-centered">{{ p.flags }}</td>
           <td class="has-text-centered">{{ p.kills }}</td>
           <td class="has-text-centered">{{ p.deaths }}</td>
           <td class="is-hidden-mobile has-text-centered">{{ kdr(p.kills, p.deaths).toFixed(2) }}</td>
           <td v-if="teamMode" class="is-hidden-mobile has-text-centered"><span v-if="p.teamkills > 2" class="teamkiller-red">{{ p.teamkills }}</span><span v-else>{{ p.teamkills }}</span></td>
-          <td class="is-hidden-mobile">{{ p.ip }}</td>
+          <td class="is-hidden-mobile monospace">{{ p.ip }}</td>
         </tr>
       </tbody>
     </table>
@@ -52,7 +52,7 @@ export default {
 <style scoped>
 .header {
   color: white;
-  border-radius: 10px;
+  border-radius: 9px;
 }
 .cla {
   background-color: red;

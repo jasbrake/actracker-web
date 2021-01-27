@@ -5,7 +5,7 @@
         <h1 class="title">Servers</h1>
         <div class="columns is-full is-centered">
           <div class="column">
-            <table class="table is-striped is-hoverable is-fullwidth">
+            <table class="table table-box server-table is-hoverable is-fullwidth">
               <thead>
                 <tr>
                   <th class="has-text-centered"><b-tooltip label="Location" type="is-dark"><b-icon icon="globe-americas"></b-icon></b-tooltip></th>
@@ -27,7 +27,7 @@
                   <td class="is-hidden-mobile has-text-centered"><span class="tag is-medium">{{ server.game.minutes_remaining }}</span></td>
                   <td class="is-hidden-mobile">
                     <span class="tags has-addons">
-                      <span class="tag is-success is-medium">{{ server.ip }} {{ server.port }}</span>
+                      <span class="tag is-success is-medium monospaced">{{ server.ip }} {{ server.port }}</span>
                     </span>
                   </td>
                 </tr>
@@ -81,6 +81,9 @@ export default {
 </script>
 
 <style scoped>
+.server-table {
+  border-radius: 6px;
+}
 td:hover {
   cursor: pointer;
 }

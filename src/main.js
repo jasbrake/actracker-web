@@ -5,6 +5,7 @@ import store from './store'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import 'flag-icon-css/css/flag-icon.min.css'
+import './styles/styles.scss'
 
 Vue.use(Buefy, { defaultIconPack: 'fas' })
 
