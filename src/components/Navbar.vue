@@ -18,7 +18,7 @@
                         icon-pack="fas"
                         :loading="isFetchingPlayers"
                         @typing="fetchPlayers"
-                        @select="gotoPlayer(player)"
+                        @select="p => gotoPlayer(p)"
                         @keydown.native.enter="gotoPlayer(player)"
         >
           <template slot-scope="props">
